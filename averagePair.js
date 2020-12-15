@@ -1,29 +1,25 @@
 function averagePair(arr, avg) {
+	if (arr.length === 0) {
+		return false;
+	}
 
-    if(arr.length===0){
-        return false;
-    }
+	let start = 0;
+	let end = arr.length - 1;
 
-    let start = 0;
-    let end = arr.length - 1;
+	while (start !== end) {
+		let a = arr[start];
+		let b = arr[end];
 
-    while(start !== end){
+		if ((a + b) / 2 > avg) {
+			end--;
+		} else if ((a + b) / 2 < avg) {
+			start++;
+		} else {
+			return true;
+		}
+	}
 
-        let a = arr[start];
-        let b = arr[end];
-
-        if((a+b)/2 > avg){
-            end--;
-        } else if((a+b)/2 < avg) {
-            start++;
-        } else {
-            return true;
-        }
-
-    }
-
-    return false;
-
+	return false;
 }
 
 console.log(averagePair([], 4));

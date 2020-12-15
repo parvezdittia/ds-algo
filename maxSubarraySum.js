@@ -1,31 +1,26 @@
 function maxSubarraySum(arr, len) {
+	if (len > arr.length) {
+		return null;
+	}
 
-    if (len > arr.length) {
-        return null;
-    }
+	let sum = 0;
+	for (let i = 0; i < len; i++) {
+		sum += arr[i];
+	}
 
-    let sum = 0;
-    for (let i = 0; i < len; i++) {
-        sum += arr[i];
-    }
+	let max = sum;
+	for (let i = 1; i <= arr.length - len; i++) {
+		let start = arr[i - 1];
+		let end = arr[i + len - 1];
 
-    let max = sum;
-    for (let i = 1; i <= arr.length - len; i++) {
+		sum = sum - start + end;
 
-        let start = arr[i - 1];
-        let end = arr[i + len - 1];
+		if (max < sum) {
+			max = sum;
+		}
+	}
 
-        sum = sum - start + end;
-
-        if (max < sum) {
-            max = sum;
-        }
-
-    }
-
-    return max;
-
-
+	return max;
 }
 
-console.log(maxSubarraySum([1, 2, 3], 2))
+console.log(maxSubarraySum([1, 2, 3], 2));

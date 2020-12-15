@@ -23,44 +23,33 @@
 // }
 
 function collectStrings(input) {
+	let arr = [];
 
-    let arr = [];
+	for (let key in input) {
+		if (typeof input[key] === "string") {
+			arr.push(input[key]);
+		} else if (typeof input[key] === "object") {
+			arr = arr.concat(collectStrings(input[key]));
+		}
+	}
 
-    for(let key in input){
-
-        if(typeof input[key] === 'string'){
-
-            arr.push(input[key]);
-
-        } else if(typeof input[key] === 'object'){
-
-                    
-            arr = arr.concat(collectStrings(input[key]))
-            
-        }
-        
-    }
-    
-    return arr;
-
+	return arr;
 }
-
-
 
 const obj = {
-    stuff: "foo",
-    data: {
-        val: {
-            thing: {
-                info: "bar",
-                moreInfo: {
-                    evenMoreInfo: {
-                        weMadeIt: "baz"
-                    }
-                }
-            }
-        }
-    }
-}
+	stuff: "foo",
+	data: {
+		val: {
+			thing: {
+				info: "bar",
+				moreInfo: {
+					evenMoreInfo: {
+						weMadeIt: "baz",
+					},
+				},
+			},
+		},
+	},
+};
 
-console.log(collectStrings(obj)) // ["foo", "bar", "baz"])
+console.log(collectStrings(obj)); // ["foo", "bar", "baz"])

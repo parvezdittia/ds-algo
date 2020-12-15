@@ -1,20 +1,15 @@
 function isSubsequence(seq, target) {
+	for (let i = 0, j = 0; j < target.length; j++) {
+		if (seq[i] === target[j]) {
+			i++;
+		}
 
-    for (let i = 0, j = 0; j < target.length; j++) {
+		if (i === seq.length) {
+			return true;
+		}
+	}
 
-        if (seq[i] === target[j]) {
-            i++;
-        }
-
-        if (i === seq.length) {
-            return true;
-        }
-
-    }
-
-    return false;
-
-
+	return false;
 }
 
-console.log(isSubsequence('prv', 'parpasadrvez'))
+console.log(isSubsequence("prv", "parpasadrvez"));

@@ -1,22 +1,22 @@
 {
-  "name": "ds-algo",
-  "version": "1.0.0",
-  "description": "DS Algo",
-  "main": "anagram.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/parvezdittia/ds-algo.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/parvezdittia/ds-algo/issues"
-  },
-  "homepage": "https://github.com/parvezdittia/ds-algo#readme",
-  "devDependencies": {
-    "prettier": "2.2.1"
-  }
+	"name": "ds-algo",
+	"version": "1.0.0",
+	"description": "DS Algo",
+	"main": "anagram.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/parvezdittia/ds-algo.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/parvezdittia/ds-algo/issues"
+	},
+	"homepage": "https://github.com/parvezdittia/ds-algo#readme",
+	"devDependencies": {
+		"prettier": "2.2.1"
+	}
 }

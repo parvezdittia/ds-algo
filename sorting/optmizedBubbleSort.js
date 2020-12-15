@@ -1,35 +1,26 @@
 function optimizedBubbleSort(arr) {
+	let i = arr.length - 1;
 
-    let i = arr.length - 1;
+	while (i != 0) {
+		let k = 0;
 
-    while (i != 0) {
+		for (let j = 0; j < i; j++) {
+			console.log(arr, arr[j], arr[j + 1]);
 
-        let k = 0;
+			if (arr[j] > arr[j + 1]) {
+				k = j;
+				let temp = arr[j + 1];
+				arr[j + 1] = arr[j];
+				arr[j] = temp;
+			}
+		}
 
-        for (let j = 0; j < i; j++) {
+		i = k;
 
-            console.log(arr, arr[j], arr[j + 1]);
+		console.log("one pass");
+	}
 
-            if (arr[j] > arr[j + 1]) {
-                k = j;
-                let temp = arr[j + 1];
-                arr[j + 1] = arr[j];
-                arr[j] = temp;
-            }
-
-
-        }
-
-        i = k;
-
-        console.log('one pass')
-
-
-
-    }
-
-    console.log(arr)
-
+	console.log(arr);
 }
 
 optimizedBubbleSort([4, 3, 2, 1]);
