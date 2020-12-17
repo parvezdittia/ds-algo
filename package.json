@@ -17,6 +17,7 @@
 	},
 	"homepage": "https://github.com/parvezdittia/ds-algo#readme",
 	"devDependencies": {
+		"eslint": "^7.15.0",
 		"prettier": "2.2.1"
 	}
 }
