@@ -8,7 +8,7 @@ function validAnagram(str1, str2) {
 	for (let i = 0; i < str1.length; i++) {
 		let character = str1.charAt(i);
 
-		if (obj1.hasOwnProperty(character)) {
+		if (obj1[character]) {
 			obj1[character]++;
 		} else {
 			obj1[character] = 1;
@@ -20,7 +20,7 @@ function validAnagram(str1, str2) {
 	for (let i = 0; i < str2.length; i++) {
 		let character = str2.charAt(i);
 
-		if (obj2.hasOwnProperty(character)) {
+		if (obj2[character]) {
 			obj2[character]++;
 		} else {
 			obj2[character] = 1;
@@ -28,10 +28,7 @@ function validAnagram(str1, str2) {
 	}
 
 	for (let character in obj1) {
-		if (
-			!obj2.hasOwnProperty(character) ||
-			obj2[character] !== obj1[character]
-		) {
+		if (!obj2[character] || obj2[character] !== obj1[character]) {
 			return false;
 		}
 	}

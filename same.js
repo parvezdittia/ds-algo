@@ -2,7 +2,7 @@ function same(arr1, arr2) {
 	let obj = {};
 
 	for (let i in arr1) {
-		if (obj.hasOwnProperty(arr1[i])) {
+		if (obj[arr1[i]]) {
 			obj[arr1[i]]++;
 		} else {
 			obj[arr1[i]] = 1;
@@ -12,7 +12,7 @@ function same(arr1, arr2) {
 	for (let i in arr2) {
 		let x = Math.sqrt(arr2[i]);
 
-		if (obj.hasOwnProperty(x)) {
+		if (obj[x]) {
 			obj[x]--;
 
 			if (obj[x] === 0) {

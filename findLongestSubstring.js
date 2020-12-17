@@ -6,7 +6,7 @@ function findLongestSubstring(str) {
 	for (let i = 0; i < str.length; i++) {
 		let char = str[i];
 
-		if (map.hasOwnProperty(char)) {
+		if (map[char]) {
 			i = map[char];
 			maxLength = maxLength < len ? len : maxLength;
 			map = {};
