@@ -99,6 +99,23 @@ class SinglyLinkedList {
 
 		return pointer.val;
 	}
+
+	set(index, data) {
+		if (index < 0 || index > this.length) {
+			return false;
+		}
+
+		let pointer = this.head;
+		let i = 0;
+
+		while (i < index) {
+			pointer = pointer.next;
+			i++;
+		}
+
+		pointer.val = data;
+		return true;
+	}
 }
 
 let sll = new SinglyLinkedList();
