@@ -1,4 +1,4 @@
-import { Node } from "../SinglyLinkedList.js";
+import { Node, SinglyLinkedList } from "../SinglyLinkedList.js";
 import { describe, expect, test } from "@jest/globals";
 
 describe("Node Test", () => {
@@ -22,5 +22,27 @@ describe("Node Test", () => {
 		expect(node.val[1]).toBe("b");
 		expect(node.val[2]).toBe("c");
 		expect(node.next).toBeNull();
+	});
+});
+
+describe("Linked List Test", () => {
+	test("Creation of an empty list", () => {
+		const list = new SinglyLinkedList();
+		expect(list.head).toBeNull();
+	});
+
+	test("Push to linked list", () => {
+		const list1 = new SinglyLinkedList();
+
+		expect(list1.push("a")).toBe(1);
+		expect(list1).toMatchObject({ head: { val: "a", next: null } });
+
+		const list2 = new SinglyLinkedList();
+		list2.push("a");
+
+		expect(list2.push("b")).toBe(2);
+		expect(list2).toMatchObject({
+			head: { val: "a", next: { val: "b", next: null } },
+		});
 	});
 });
