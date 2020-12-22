@@ -8,24 +8,26 @@ export class Node {
 export class SinglyLinkedList {
 	constructor() {
 		this.head = null;
-		this.tail = null;
-		this.length = 0;
 	}
 
 	push(val) {
-		let newNode = new Node(val);
+		const newNode = new Node(val);
 
 		if (this.head === null) {
 			this.head = newNode;
-			this.tail = newNode;
-		} else {
-			this.tail.next = newNode;
-			this.tail = newNode;
+			return 1;
 		}
 
-		this.length++;
+		let lengthOfList = 1;
+		let pointer = this.head;
 
-		return this;
+		while (pointer.next !== null) {
+			pointer = pointer.next;
+			lengthOfList = lengthOfList + 1;
+		}
+
+		pointer.next = newNode;
+		return lengthOfList + 1;
 	}
 
 	pop() {
