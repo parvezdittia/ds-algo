@@ -116,6 +116,28 @@ class SinglyLinkedList {
 		pointer.val = data;
 		return true;
 	}
+
+	insert(index, data) {
+		if (index < 0) {
+			return undefined;
+		}
+
+		let dummyNode = new Node(0);
+		dummyNode.next = this.head;
+		let pointer = dummyNode;
+
+		let i = 0;
+
+		while (i < index) {
+			pointer = pointer.next;
+			i++;
+		}
+
+		let newNode = new Node(data);
+		newNode.next = pointer.next;
+		pointer.next = newNode;
+		return data;
+	}
 }
 
 let sll = new SinglyLinkedList();
