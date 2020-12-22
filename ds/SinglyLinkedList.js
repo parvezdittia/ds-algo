@@ -1,11 +1,11 @@
-class Node {
+export class Node {
 	constructor(val) {
 		this.val = val;
 		this.next = null;
 	}
 }
 
-class SinglyLinkedList {
+export class SinglyLinkedList {
 	constructor() {
 		this.head = null;
 		this.tail = null;
@@ -139,7 +139,3 @@ class SinglyLinkedList {
 		return data;
 	}
 }
-
-let sll = new SinglyLinkedList();
-sll.unshift(1).unshift(2).push(3);
-console.log(sll);
