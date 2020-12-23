@@ -101,4 +101,41 @@ describe("Linked List Test", () => {
 			},
 		});
 	});
+
+	test("Get data at given index", () => {
+		const list = new SinglyLinkedList();
+
+		list.push("a");
+		list.push("b");
+		list.push("c");
+
+		expect(list).toMatchObject({
+			head: {
+				val: "a",
+				next: {
+					val: "b",
+					next: {
+						val: "c",
+						next: null,
+					},
+				},
+			},
+		});
+
+		expect(list.get(-1)).toBeUndefined();
+		expect(list.get(0)).toBe("a");
+		expect(list.get(1)).toBe("b");
+		expect(list.get(2)).toBe("c");
+		expect(list.get(3)).toBeUndefined();
+
+		const list2 = new SinglyLinkedList();
+
+		expect(list2).toMatchObject({
+			head: null,
+		});
+
+		expect(list2.get(0)).toBeUndefined();
+		expect(list2.get(1)).toBeUndefined();
+		expect(list2.get(-1)).toBeUndefined();
+	});
 });

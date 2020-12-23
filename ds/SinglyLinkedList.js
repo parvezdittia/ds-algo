@@ -76,16 +76,17 @@ export class SinglyLinkedList {
 	}
 
 	get(index) {
-		if (index < 0 || index >= this.length) {
+		if (index < 0) {
 			return undefined;
 		}
 
 		let pointer = this.head;
-		for (let i = 0; i < index; i++) {
+
+		for (let i = 0; i < index && pointer !== null; i++) {
 			pointer = pointer.next;
 		}
 
-		return pointer.val;
+		return pointer ? pointer.val : undefined;
 	}
 
 	set(index, data) {
