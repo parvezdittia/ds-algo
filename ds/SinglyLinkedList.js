@@ -49,22 +49,17 @@ export class SinglyLinkedList {
 	}
 
 	shift() {
-		let val;
-
 		if (this.head === null) {
-			return val;
-		} else if (this.head === this.tail) {
-			val = this.head.val;
+			return undefined;
+		} else if (this.head.next === null) {
+			let shiftedValue = this.head.val;
 			this.head = null;
-			this.tail = null;
-			this.length--;
+			return shiftedValue;
 		} else {
-			val = this.head.val;
+			let shiftedValue = this.head.val;
 			this.head = this.head.next;
-			this.length--;
+			return shiftedValue;
 		}
-
-		return val;
 	}
 
 	unshift(val) {
@@ -72,15 +67,12 @@ export class SinglyLinkedList {
 
 		if (this.head === null) {
 			this.head = newNode;
-			this.tail = newNode;
 		} else {
 			newNode.next = this.head;
 			this.head = newNode;
 		}
 
-		this.length++;
-
-		return this;
+		return val;
 	}
 
 	get(index) {

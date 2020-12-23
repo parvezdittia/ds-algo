@@ -61,5 +61,44 @@ describe("Linked List Test", () => {
 		expect(list.pop()).toBe("b");
 		expect(list.pop()).toBe("a");
 		expect(list.pop()).toBeUndefined();
+		expect(list.pop()).toBeUndefined();
+	});
+
+	test("Shift a linked list", () => {
+		const list = new SinglyLinkedList();
+
+		list.push("a");
+		list.push("b");
+		list.push("c");
+		list.push("d");
+		list.push("e");
+
+		expect(list.shift()).toBe("a");
+		expect(list.shift()).toBe("b");
+		expect(list.shift()).toBe("c");
+		expect(list.shift()).toBe("d");
+		expect(list.shift()).toBe("e");
+		expect(list.shift()).toBeUndefined();
+		expect(list.shift()).toBeUndefined();
+	});
+
+	test("Unshift a linked list", () => {
+		const list = new SinglyLinkedList();
+
+		expect(list.unshift("a")).toBe("a");
+		expect(list).toMatchObject({
+			head: { val: "a", next: null },
+		});
+
+		expect(list.unshift("b")).toBe("b");
+		expect(list).toMatchObject({
+			head: {
+				val: "b",
+				next: {
+					val: "a",
+					next: null,
+				},
+			},
+		});
 	});
 });
