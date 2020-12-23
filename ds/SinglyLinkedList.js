@@ -31,27 +31,21 @@ export class SinglyLinkedList {
 	}
 
 	pop() {
-		let val;
-
 		if (this.head === null) {
-			return val;
-		} else if (this.head === this.tail) {
-			val = this.head.val;
+			return undefined;
+		} else if (this.head.next === null) {
+			let popedValue = this.head.val;
 			this.head = null;
-			this.tail = null;
-			this.length--;
+			return popedValue;
 		} else {
-			let prev = this.head;
-			while (prev.next !== this.tail) {
-				prev = prev.next;
+			let pointer = this.head;
+			while (pointer.next.next !== null) {
+				pointer = pointer.next;
 			}
-			val = this.tail.val;
-			this.tail = prev;
-			this.tail.next = null;
-			this.length--;
+			let popedData = pointer.next.val;
+			pointer.next = null;
+			return popedData;
 		}
-
-		return val;
 	}
 
 	shift() {

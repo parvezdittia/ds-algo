@@ -45,4 +45,21 @@ describe("Linked List Test", () => {
 			head: { val: "a", next: { val: "b", next: null } },
 		});
 	});
+
+	test("Pop from a linked list", () => {
+		const list = new SinglyLinkedList();
+
+		list.push("a");
+		list.push("b");
+		list.push("c");
+		list.push("d");
+		list.push("e");
+
+		expect(list.pop()).toBe("e");
+		expect(list.pop()).toBe("d");
+		expect(list.pop()).toBe("c");
+		expect(list.pop()).toBe("b");
+		expect(list.pop()).toBe("a");
+		expect(list.pop()).toBeUndefined();
+	});
 });
