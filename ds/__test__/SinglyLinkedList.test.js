@@ -171,4 +171,99 @@ describe("Linked List Test", () => {
 		expect(list.set(1, "x")).toBe("x");
 		expect(list.set(5, "x")).toBeUndefined();
 	});
+
+	test("Insert data at a given index", () => {
+		const list = new SinglyLinkedList();
+
+		expect(list).toMatchObject({
+			head: {},
+		});
+
+		expect(list.insert(0, "a")).toMatchObject({
+			head: {
+				val: "a",
+				next: null,
+			},
+		});
+
+		expect(list.insert(-1, "b")).toMatchObject({
+			head: {
+				val: "b",
+				next: {
+					val: "a",
+					next: null,
+				},
+			},
+		});
+
+		expect(list.insert(-10, "c")).toMatchObject({
+			head: {
+				val: "c",
+				next: {
+					val: "b",
+					next: {
+						val: "a",
+						next: null,
+					},
+				},
+			},
+		});
+
+		expect(list.insert(3, "x")).toMatchObject({
+			head: {
+				val: "c",
+				next: {
+					val: "b",
+					next: {
+						val: "a",
+						next: {
+							val: "x",
+							next: null,
+						},
+					},
+				},
+			},
+		});
+
+		expect(list.insert(10, "y")).toMatchObject({
+			head: {
+				val: "c",
+				next: {
+					val: "b",
+					next: {
+						val: "a",
+						next: {
+							val: "x",
+							next: {
+								val: "y",
+								next: null,
+							},
+						},
+					},
+				},
+			},
+		});
+
+		expect(list.insert(2, "i")).toMatchObject({
+			head: {
+				val: "c",
+				next: {
+					val: "b",
+					next: {
+						val: "i",
+						next: {
+							val: "a",
+							next: {
+								val: "x",
+								next: {
+									val: "y",
+									next: null,
+								},
+							},
+						},
+					},
+				},
+			},
+		});
+	});
 });
