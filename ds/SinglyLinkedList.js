@@ -90,20 +90,22 @@ export class SinglyLinkedList {
 	}
 
 	set(index, data) {
-		if (index < 0 || index > this.length) {
-			return false;
+		if (index < 0) {
+			return undefined;
 		}
 
 		let pointer = this.head;
-		let i = 0;
 
-		while (i < index) {
+		for (let i = 0; i < index && pointer !== null; i++) {
 			pointer = pointer.next;
-			i++;
 		}
 
-		pointer.val = data;
-		return true;
+		if (pointer) {
+			pointer.val = data;
+			return data;
+		} else {
+			return undefined;
+		}
 	}
 
 	insert(index, data) {
