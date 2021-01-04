@@ -109,17 +109,17 @@ export class SinglyLinkedList {
 	}
 
 	insert(index, data) {
-		if (index < 0) {
-			return undefined;
+		if (index <= 0) {
+			let newNode = new Node(data);
+			newNode.next = this.head;
+			this.head = newNode;
+			return this;
 		}
 
-		let dummyNode = new Node(0);
-		dummyNode.next = this.head;
-		let pointer = dummyNode;
-
 		let i = 0;
+		let pointer = this.head;
 
-		while (i < index) {
+		while (i < index - 1 && pointer.next !== null) {
 			pointer = pointer.next;
 			i++;
 		}
@@ -127,6 +127,6 @@ export class SinglyLinkedList {
 		let newNode = new Node(data);
 		newNode.next = pointer.next;
 		pointer.next = newNode;
-		return data;
+		return this;
 	}
 }
