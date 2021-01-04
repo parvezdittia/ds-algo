@@ -138,4 +138,37 @@ describe("Linked List Test", () => {
 		expect(list2.get(1)).toBeUndefined();
 		expect(list2.get(-1)).toBeUndefined();
 	});
+
+	test("Set data at a given index", () => {
+		const list = new SinglyLinkedList();
+
+		expect(list).toMatchObject({
+			head: {},
+		});
+
+		expect(list.set(0, "a")).toBeUndefined();
+		expect(list.set(-1, "a")).toBeUndefined();
+		expect(list.set(1, "a")).toBeUndefined();
+
+		list.push("a");
+		list.push("b");
+		list.push("c");
+
+		expect(list).toMatchObject({
+			head: {
+				val: "a",
+				next: {
+					val: "b",
+					next: {
+						val: "c",
+						next: null,
+					},
+				},
+			},
+		});
+
+		expect(list.set(-1, "x")).toBeUndefined();
+		expect(list.set(1, "x")).toBe("x");
+		expect(list.set(5, "x")).toBeUndefined();
+	});
 });
