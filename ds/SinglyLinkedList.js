@@ -129,4 +129,30 @@ export class SinglyLinkedList {
 		pointer.next = newNode;
 		return this;
 	}
+
+	delete(index) {
+		if (index < 0 || this.head === null) {
+			return this;
+		}
+
+		if (index === 0) {
+			this.head = this.head.next;
+			return this;
+		} else {
+			let i = 0;
+			let pointer = this.head;
+
+			while (i < index - 1 && pointer.next !== null) {
+				pointer = pointer.next;
+				i++;
+			}
+
+			if (pointer.next === null) {
+				return this;
+			} else {
+				pointer.next = pointer.next.next;
+				return this;
+			}
+		}
+	}
 }
