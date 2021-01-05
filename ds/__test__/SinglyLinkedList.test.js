@@ -266,4 +266,65 @@ describe("Linked List Test", () => {
 			},
 		});
 	});
+
+	test("Delete at a given index", () => {
+		let list = new SinglyLinkedList();
+
+		expect(list.delete(-1)).toMatchObject({ head: null });
+		expect(list.delete(0)).toMatchObject({ head: null });
+		expect(list.delete(1)).toMatchObject({ head: null });
+
+		list.push("x");
+
+		expect(list.delete(-1)).toMatchObject({ head: { val: "x", next: null } });
+		expect(list.delete(1)).toMatchObject({ head: { val: "x", next: null } });
+		expect(list.delete(0)).toMatchObject({ head: null });
+
+		list.push("x");
+		list.push("y");
+		list.push("z");
+
+		expect(list.delete(-1)).toMatchObject({
+			head: {
+				val: "x",
+				next: {
+					val: "y",
+					next: {
+						val: "z",
+						next: null,
+					},
+				},
+			},
+		});
+		expect(list.delete(3)).toMatchObject({
+			head: {
+				val: "x",
+				next: {
+					val: "y",
+					next: {
+						val: "z",
+						next: null,
+					},
+				},
+			},
+		});
+		expect(list.delete(1)).toMatchObject({
+			head: {
+				val: "x",
+				next: {
+					val: "z",
+					next: null,
+				},
+			},
+		});
+		expect(list.delete(1)).toMatchObject({
+			head: {
+				val: "x",
+				next: null,
+			},
+		});
+		expect(list.delete(0)).toMatchObject({
+			head: null,
+		});
+	});
 });
