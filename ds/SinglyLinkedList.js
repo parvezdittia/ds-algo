@@ -155,4 +155,24 @@ export class SinglyLinkedList {
 			}
 		}
 	}
+
+	reverse() {
+		if (this.head === null || this.head.next === null) {
+			return this;
+		}
+
+		let pointer = null;
+		let temp = this.head.next;
+
+		while (temp !== null) {
+			this.head.next = pointer;
+			pointer = this.head;
+			this.head = temp;
+			temp = temp.next;
+		}
+
+		this.head.next = pointer;
+		pointer = this.head;
+		return this;
+	}
 }
