@@ -327,4 +327,64 @@ describe("Linked List Test", () => {
 			head: null,
 		});
 	});
+
+	test("Reverse a singly linked list", () => {
+		const list = new SinglyLinkedList();
+		expect(list.reverse()).toMatchObject({
+			head: null,
+		});
+
+		list.push("x");
+		expect(list.reverse()).toMatchObject({
+			head: {
+				val: "x",
+				next: null,
+			},
+		});
+
+		list.push("y");
+
+		expect(list.reverse()).toMatchObject({
+			head: {
+				val: "y",
+				next: {
+					val: "x",
+					next: null,
+				},
+			},
+		});
+
+		list.unshift("z");
+
+		expect(list.reverse()).toMatchObject({
+			head: {
+				val: "x",
+				next: {
+					val: "y",
+					next: {
+						val: "z",
+						next: null,
+					},
+				},
+			},
+		});
+
+		list.unshift("w");
+
+		expect(list.reverse()).toMatchObject({
+			head: {
+				val: "z",
+				next: {
+					val: "y",
+					next: {
+						val: "x",
+						next: {
+							val: "w",
+							next: null,
+						},
+					},
+				},
+			},
+		});
+	});
 });
