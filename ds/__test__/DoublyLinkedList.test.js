@@ -55,4 +55,22 @@ describe("Doubly Linked List Test", () => {
 		expect(list.head.next.previous).toBe(list.head);
 		expect(list.head.next.next).toBeNull();
 	});
+
+	test("Pop from a DLL", () => {
+		const list = new DoublyLinkedList();
+
+		list.push("a");
+		list.push("b");
+		list.push("c");
+		list.push("d");
+		list.push("e");
+
+		expect(list.pop()).toBe("e");
+		expect(list.pop()).toBe("d");
+		expect(list.pop()).toBe("c");
+		expect(list.pop()).toBe("b");
+		expect(list.pop()).toBe("a");
+		expect(list.pop()).toBeUndefined();
+		expect(list.pop()).toBeUndefined();
+	});
 });
