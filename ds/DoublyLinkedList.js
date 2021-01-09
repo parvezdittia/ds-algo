@@ -30,4 +30,22 @@ export class DoublyLinkedList {
 		node.next = null;
 		return lengthOfList + 1;
 	}
+
+	pop() {
+		if (this.head === null) {
+			return undefined;
+		} else if (this.head.next === null) {
+			const poppedValue = this.head.value;
+			this.head = null;
+			return poppedValue;
+		} else {
+			let pointer = this.head;
+			while (pointer.next.next !== null) {
+				pointer = pointer.next;
+			}
+			const poppedValue = pointer.next.value;
+			pointer.next = null;
+			return poppedValue;
+		}
+	}
 }
