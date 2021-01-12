@@ -110,4 +110,24 @@ describe("Doubly Linked List Test", () => {
 			head: null,
 		});
 	});
+
+	test("Unshift a doubly linked list", () => {
+		const list = new DoublyLinkedList();
+
+		expect(list.unshift("a")).toBe("a");
+		expect(list).toMatchObject({
+			head: {
+				value: "a",
+				previous: null,
+				next: null,
+			},
+		});
+
+		expect(list.unshift("b")).toBe("b");
+		expect(list.head.value).toBe("b");
+		expect(list.head.previous).toBeNull();
+		expect(list.head.next.value).toBe("a");
+		expect(list.head.next.previous).toBe(list.head);
+		expect(list.head.next.next).toBeNull();
+	});
 });
