@@ -73,4 +73,41 @@ describe("Doubly Linked List Test", () => {
 		expect(list.pop()).toBeUndefined();
 		expect(list.pop()).toBeUndefined();
 	});
+
+	test("Shift a DLL", () => {
+		const list = new DoublyLinkedList();
+
+		expect(list.shift()).toBeUndefined();
+		expect(list).toMatchObject({
+			head: null,
+		});
+
+		list.push("x");
+		expect(list).toMatchObject({
+			head: {
+				value: "x",
+				previous: null,
+				next: null,
+			},
+		});
+		expect(list.shift()).toBe("x");
+		expect(list).toMatchObject({
+			head: null,
+		});
+
+		list.push("x");
+		list.push("y");
+		expect(list.shift()).toBe("x");
+		expect(list).toMatchObject({
+			head: {
+				value: "y",
+				previous: null,
+				next: null,
+			},
+		});
+		expect(list.shift()).toBe("y");
+		expect(list).toMatchObject({
+			head: null,
+		});
+	});
 });
