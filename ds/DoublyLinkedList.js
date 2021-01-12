@@ -48,4 +48,19 @@ export class DoublyLinkedList {
 			return poppedValue;
 		}
 	}
+
+	shift() {
+		if (this.head === null) {
+			return undefined;
+		} else if (this.head.next === null) {
+			const shiftedValue = this.head.value;
+			this.head = null;
+			return shiftedValue;
+		} else {
+			const shiftedValue = this.head.value;
+			this.head = this.head.next;
+			this.head.previous = null;
+			return shiftedValue;
+		}
+	}
 }
