@@ -76,4 +76,17 @@ export class DoublyLinkedList {
 		}
 		return value;
 	}
+
+	get(index) {
+		if (index < 0) {
+			return undefined;
+		}
+
+		let pointer = this.head;
+		for (let i = 0; pointer !== null && i < index; i++) {
+			pointer = pointer.next;
+		}
+
+		return pointer ? pointer.value : undefined;
+	}
 }
