@@ -130,4 +130,22 @@ describe("Doubly Linked List Test", () => {
 		expect(list.head.next.previous).toBe(list.head);
 		expect(list.head.next.next).toBeNull();
 	});
+
+	test("Get data at an index", () => {
+		const list = new DoublyLinkedList();
+		expect(list.get(0)).toBeUndefined();
+		expect(list.get(1)).toBeUndefined();
+		expect(list.get(10)).toBeUndefined();
+
+		list.push("a");
+		list.push("b");
+		list.push("c");
+		list.push("d");
+
+		expect(list.get(-1)).toBeUndefined();
+		expect(list.get(0)).toBe("a");
+		expect(list.get(2)).toBe("c");
+		expect(list.get(3)).toBe("d");
+		expect(list.get(4)).toBeUndefined();
+	});
 });
