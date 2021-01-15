@@ -107,4 +107,35 @@ export class DoublyLinkedList {
 			return undefined;
 		}
 	}
+
+	insert(index, data) {
+		const newNode = new Node(data);
+
+		if (index < 0 && this.head !== null) {
+			newNode.next = this.head;
+			this.head.previous = newNode;
+			this.head = newNode;
+			return this;
+		} else if (index < 0 && this.head === null) {
+			this.head = newNode;
+			return this;
+		}
+
+		let pointer = this.head;
+		for (let i = 0; i < index - 1 && pointer.next !== null; i++) {
+			pointer = pointer.next;
+		}
+
+		if (pointer.next === null) {
+			pointer.next = newNode;
+			newNode.previous = pointer;
+			return this;
+		} else {
+			newNode.previous = pointer;
+			newNode.next = pointer.next;
+			pointer.next = newNode;
+			newNode.next.previous = newNode;
+			return this;
+		}
+	}
 }
