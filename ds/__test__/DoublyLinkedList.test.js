@@ -165,4 +165,42 @@ describe("Doubly Linked List Test", () => {
 		expect(list.get(2)).toBe("c");
 		expect(list.set(3, "y")).toBeUndefined();
 	});
+
+	test("Insert data at a given index", () => {
+		const list = new DoublyLinkedList();
+
+		list.insert(-1, "a");
+		expect(list.head.value).toBe("a");
+		expect(list.head.next).toBeNull();
+		expect(list.head.previous).toBeNull();
+
+		list.insert(-10, "b");
+		expect(list.head.value).toBe("b");
+		expect(list.head.previous).toBeNull();
+		expect(list.head.next.value).toBe("a");
+		expect(list.head.next.next).toBeNull();
+		expect(list.head.next.previous).toBe(list.head);
+
+		list.insert(2, "c");
+		let node = list.head.next.next;
+		expect(node.value).toBe("c");
+		expect(node.next).toBeNull();
+		expect(node.previous.value).toBe("a");
+		expect(node.previous.next).toBe(node);
+
+		list.insert(20, "d");
+		node = list.head.next.next.next;
+		expect(node.value).toBe("d");
+		expect(node.next).toBeNull();
+		expect(node.previous.value).toBe("c");
+		expect(node.previous.next).toBe(node);
+
+		list.insert(2, "x");
+		node = list.head.next.next;
+		expect(node.value).toBe("x");
+		expect(node.next.value).toBe("c");
+		expect(node.previous.value).toBe("a");
+		expect(node.previous.next).toBe(node);
+		expect(node.next.previous).toBe(node);
+	});
 });
