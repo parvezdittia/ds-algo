@@ -138,4 +138,32 @@ export class DoublyLinkedList {
 			return this;
 		}
 	}
+
+	delete(index) {
+		if (index < 0 || this.head === null) {
+			return this;
+		}
+
+		if (index === 0) {
+			this.head = this.head.next;
+			return this;
+		} else {
+			let pointer = this.head;
+
+			for (let i = 0; i < index - 1 && pointer.next !== null; i++) {
+				pointer = pointer.next;
+			}
+
+			if (pointer.next === null) {
+				return this;
+			} else {
+				let temp = pointer.next?.next;
+				pointer.next = temp;
+				if (temp) {
+					temp.previous = pointer;
+				}
+				return this;
+			}
+		}
+	}
 }
