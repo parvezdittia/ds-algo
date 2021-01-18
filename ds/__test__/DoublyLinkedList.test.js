@@ -203,4 +203,51 @@ describe("Doubly Linked List Test", () => {
 		expect(node.previous.next).toBe(node);
 		expect(node.next.previous).toBe(node);
 	});
+
+	test("Delete data at a given index", () => {
+		const list = new DoublyLinkedList();
+
+		list.delete(-1);
+		expect(list).toMatchObject({
+			head: null,
+		});
+
+		list.delete(10);
+		expect(list).toMatchObject({
+			head: null,
+		});
+
+		list.push("a");
+		list.delete(0);
+		expect(list).toMatchObject({
+			head: null,
+		});
+
+		list.push("a");
+		list.push("b");
+		list.delete(1);
+		expect(list).toMatchObject({
+			head: {
+				value: "a",
+				previous: null,
+				next: null,
+			},
+		});
+
+		list.push("b");
+		list.delete(2);
+		expect(list.head.value).toBe("a");
+		expect(list.head.previous).toBeNull();
+		expect(list.head.next.value).toBe("b");
+		expect(list.head.next.next).toBeNull();
+		expect(list.head.next.previous.value).toBe("a");
+		expect(list.head.next.previous).toBe(list.head);
+
+		list.push("c");
+		list.delete(1);
+		expect(list.head.value).toBe("a");
+		expect(list.head.next.value).toBe("c");
+		expect(list.head.next.next).toBeNull;
+		expect(list.head.next.previous.value).toBe("a");
+	});
 });
