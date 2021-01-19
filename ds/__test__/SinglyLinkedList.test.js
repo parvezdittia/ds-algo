@@ -35,13 +35,13 @@ describe("Linked List Test", () => {
 		const list1 = new SinglyLinkedList();
 
 		expect(list1.push("a")).toBe(1);
-		expect(list1).toMatchObject({ head: { val: "a", next: null } });
+		expect(list1).toEqual({ head: { val: "a", next: null } });
 
 		const list2 = new SinglyLinkedList();
 		list2.push("a");
 
 		expect(list2.push("b")).toBe(2);
-		expect(list2).toMatchObject({
+		expect(list2).toEqual({
 			head: { val: "a", next: { val: "b", next: null } },
 		});
 	});
@@ -86,12 +86,12 @@ describe("Linked List Test", () => {
 		const list = new SinglyLinkedList();
 
 		expect(list.unshift("a")).toBe("a");
-		expect(list).toMatchObject({
+		expect(list).toEqual({
 			head: { val: "a", next: null },
 		});
 
 		expect(list.unshift("b")).toBe("b");
-		expect(list).toMatchObject({
+		expect(list).toEqual({
 			head: {
 				val: "b",
 				next: {
@@ -109,7 +109,7 @@ describe("Linked List Test", () => {
 		list.push("b");
 		list.push("c");
 
-		expect(list).toMatchObject({
+		expect(list).toEqual({
 			head: {
 				val: "a",
 				next: {
@@ -130,7 +130,7 @@ describe("Linked List Test", () => {
 
 		const list2 = new SinglyLinkedList();
 
-		expect(list2).toMatchObject({
+		expect(list2).toEqual({
 			head: null,
 		});
 
@@ -142,8 +142,8 @@ describe("Linked List Test", () => {
 	test("Set data at a given index", () => {
 		const list = new SinglyLinkedList();
 
-		expect(list).toMatchObject({
-			head: {},
+		expect(list).toEqual({
+			head: null,
 		});
 
 		expect(list.set(0, "a")).toBeUndefined();
@@ -154,7 +154,7 @@ describe("Linked List Test", () => {
 		list.push("b");
 		list.push("c");
 
-		expect(list).toMatchObject({
+		expect(list).toEqual({
 			head: {
 				val: "a",
 				next: {
@@ -175,18 +175,18 @@ describe("Linked List Test", () => {
 	test("Insert data at a given index", () => {
 		const list = new SinglyLinkedList();
 
-		expect(list).toMatchObject({
-			head: {},
+		expect(list).toEqual({
+			head: null,
 		});
 
-		expect(list.insert(0, "a")).toMatchObject({
+		expect(list.insert(0, "a")).toEqual({
 			head: {
 				val: "a",
 				next: null,
 			},
 		});
 
-		expect(list.insert(-1, "b")).toMatchObject({
+		expect(list.insert(-1, "b")).toEqual({
 			head: {
 				val: "b",
 				next: {
@@ -196,7 +196,7 @@ describe("Linked List Test", () => {
 			},
 		});
 
-		expect(list.insert(-10, "c")).toMatchObject({
+		expect(list.insert(-10, "c")).toEqual({
 			head: {
 				val: "c",
 				next: {
@@ -209,7 +209,7 @@ describe("Linked List Test", () => {
 			},
 		});
 
-		expect(list.insert(3, "x")).toMatchObject({
+		expect(list.insert(3, "x")).toEqual({
 			head: {
 				val: "c",
 				next: {
@@ -225,7 +225,7 @@ describe("Linked List Test", () => {
 			},
 		});
 
-		expect(list.insert(10, "y")).toMatchObject({
+		expect(list.insert(10, "y")).toEqual({
 			head: {
 				val: "c",
 				next: {
@@ -244,7 +244,7 @@ describe("Linked List Test", () => {
 			},
 		});
 
-		expect(list.insert(2, "i")).toMatchObject({
+		expect(list.insert(2, "i")).toEqual({
 			head: {
 				val: "c",
 				next: {
@@ -270,21 +270,21 @@ describe("Linked List Test", () => {
 	test("Delete at a given index", () => {
 		let list = new SinglyLinkedList();
 
-		expect(list.delete(-1)).toMatchObject({ head: null });
-		expect(list.delete(0)).toMatchObject({ head: null });
-		expect(list.delete(1)).toMatchObject({ head: null });
+		expect(list.delete(-1)).toEqual({ head: null });
+		expect(list.delete(0)).toEqual({ head: null });
+		expect(list.delete(1)).toEqual({ head: null });
 
 		list.push("x");
 
-		expect(list.delete(-1)).toMatchObject({ head: { val: "x", next: null } });
-		expect(list.delete(1)).toMatchObject({ head: { val: "x", next: null } });
-		expect(list.delete(0)).toMatchObject({ head: null });
+		expect(list.delete(-1)).toEqual({ head: { val: "x", next: null } });
+		expect(list.delete(1)).toEqual({ head: { val: "x", next: null } });
+		expect(list.delete(0)).toEqual({ head: null });
 
 		list.push("x");
 		list.push("y");
 		list.push("z");
 
-		expect(list.delete(-1)).toMatchObject({
+		expect(list.delete(-1)).toEqual({
 			head: {
 				val: "x",
 				next: {
@@ -296,7 +296,7 @@ describe("Linked List Test", () => {
 				},
 			},
 		});
-		expect(list.delete(3)).toMatchObject({
+		expect(list.delete(3)).toEqual({
 			head: {
 				val: "x",
 				next: {
@@ -308,7 +308,7 @@ describe("Linked List Test", () => {
 				},
 			},
 		});
-		expect(list.delete(1)).toMatchObject({
+		expect(list.delete(1)).toEqual({
 			head: {
 				val: "x",
 				next: {
@@ -317,25 +317,25 @@ describe("Linked List Test", () => {
 				},
 			},
 		});
-		expect(list.delete(1)).toMatchObject({
+		expect(list.delete(1)).toEqual({
 			head: {
 				val: "x",
 				next: null,
 			},
 		});
-		expect(list.delete(0)).toMatchObject({
+		expect(list.delete(0)).toEqual({
 			head: null,
 		});
 	});
 
 	test("Reverse a singly linked list", () => {
 		const list = new SinglyLinkedList();
-		expect(list.reverse()).toMatchObject({
+		expect(list.reverse()).toEqual({
 			head: null,
 		});
 
 		list.push("x");
-		expect(list.reverse()).toMatchObject({
+		expect(list.reverse()).toEqual({
 			head: {
 				val: "x",
 				next: null,
@@ -344,7 +344,7 @@ describe("Linked List Test", () => {
 
 		list.push("y");
 
-		expect(list.reverse()).toMatchObject({
+		expect(list.reverse()).toEqual({
 			head: {
 				val: "y",
 				next: {
@@ -356,7 +356,7 @@ describe("Linked List Test", () => {
 
 		list.unshift("z");
 
-		expect(list.reverse()).toMatchObject({
+		expect(list.reverse()).toEqual({
 			head: {
 				val: "x",
 				next: {
@@ -371,7 +371,7 @@ describe("Linked List Test", () => {
 
 		list.unshift("w");
 
-		expect(list.reverse()).toMatchObject({
+		expect(list.reverse()).toEqual({
 			head: {
 				val: "z",
 				next: {

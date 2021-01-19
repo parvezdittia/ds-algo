@@ -31,7 +31,7 @@ describe("Node Test", () => {
 describe("Doubly Linked List Test", () => {
 	test("Creation of an DLL", () => {
 		const list = new DoublyLinkedList();
-		expect(list).toMatchObject({
+		expect(list).toEqual({
 			head: null,
 		});
 	});
@@ -40,7 +40,7 @@ describe("Doubly Linked List Test", () => {
 		const list = new DoublyLinkedList();
 
 		expect(list.push("a")).toBe(1);
-		expect(list).toMatchObject({
+		expect(list).toEqual({
 			head: {
 				value: "a",
 				previous: null,
@@ -78,12 +78,12 @@ describe("Doubly Linked List Test", () => {
 		const list = new DoublyLinkedList();
 
 		expect(list.shift()).toBeUndefined();
-		expect(list).toMatchObject({
+		expect(list).toEqual({
 			head: null,
 		});
 
 		list.push("x");
-		expect(list).toMatchObject({
+		expect(list).toEqual({
 			head: {
 				value: "x",
 				previous: null,
@@ -91,14 +91,14 @@ describe("Doubly Linked List Test", () => {
 			},
 		});
 		expect(list.shift()).toBe("x");
-		expect(list).toMatchObject({
+		expect(list).toEqual({
 			head: null,
 		});
 
 		list.push("x");
 		list.push("y");
 		expect(list.shift()).toBe("x");
-		expect(list).toMatchObject({
+		expect(list).toEqual({
 			head: {
 				value: "y",
 				previous: null,
@@ -106,7 +106,7 @@ describe("Doubly Linked List Test", () => {
 			},
 		});
 		expect(list.shift()).toBe("y");
-		expect(list).toMatchObject({
+		expect(list).toEqual({
 			head: null,
 		});
 	});
@@ -115,7 +115,7 @@ describe("Doubly Linked List Test", () => {
 		const list = new DoublyLinkedList();
 
 		expect(list.unshift("a")).toBe("a");
-		expect(list).toMatchObject({
+		expect(list).toEqual({
 			head: {
 				value: "a",
 				previous: null,
@@ -208,25 +208,25 @@ describe("Doubly Linked List Test", () => {
 		const list = new DoublyLinkedList();
 
 		list.delete(-1);
-		expect(list).toMatchObject({
+		expect(list).toEqual({
 			head: null,
 		});
 
 		list.delete(10);
-		expect(list).toMatchObject({
+		expect(list).toEqual({
 			head: null,
 		});
 
 		list.push("a");
 		list.delete(0);
-		expect(list).toMatchObject({
+		expect(list).toEqual({
 			head: null,
 		});
 
 		list.push("a");
 		list.push("b");
 		list.delete(1);
-		expect(list).toMatchObject({
+		expect(list).toEqual({
 			head: {
 				value: "a",
 				previous: null,
