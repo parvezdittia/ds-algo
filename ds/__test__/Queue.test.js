@@ -25,7 +25,7 @@ describe("Node Test", () => {
 	});
 });
 
-describe("Stack Test", () => {
+describe("Queue Test", () => {
 	test("Enqueue a queue", () => {
 		const queue = new Queue();
 
