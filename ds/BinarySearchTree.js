@@ -35,4 +35,20 @@ export class BinarySearchTree {
 		pointer[subTree] = newNode;
 		return this;
 	}
+
+	find(value) {
+		let pointer = this.root;
+
+		while (pointer !== null) {
+			if (pointer.value === value) {
+				break;
+			} else if (value < pointer.value) {
+				pointer = pointer.left;
+			} else {
+				pointer = pointer.right;
+			}
+		}
+
+		return pointer;
+	}
 }
