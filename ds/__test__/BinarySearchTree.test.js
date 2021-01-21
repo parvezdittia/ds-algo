@@ -72,4 +72,88 @@ describe("Binary Search Tree test", () => {
 			},
 		});
 	});
+
+	test("Find in a binary tree", () => {
+		const tree = new BinarySearchTree();
+
+		expect(tree.find(10)).toBeNull();
+
+		tree.insert(10);
+		tree.insert(5);
+		tree.insert(13);
+		tree.insert(11);
+		tree.insert(2);
+		tree.insert(16);
+		tree.insert(7);
+
+		expect(tree.find(7)).toEqual({
+			value: 7,
+			left: null,
+			right: null,
+		});
+
+		expect(tree.find(11)).toEqual({
+			value: 11,
+			left: null,
+			right: null,
+		});
+
+		expect(tree.find(13)).toEqual({
+			value: 13,
+			left: {
+				value: 11,
+				left: null,
+				right: null,
+			},
+			right: {
+				value: 16,
+				left: null,
+				right: null,
+			},
+		});
+
+		expect(tree.find(5)).toEqual({
+			value: 5,
+			left: {
+				value: 2,
+				left: null,
+				right: null,
+			},
+			right: {
+				value: 7,
+				left: null,
+				right: null,
+			},
+		});
+
+		expect(tree.find(10)).toEqual({
+			value: 10,
+			left: {
+				value: 5,
+				left: {
+					value: 2,
+					left: null,
+					right: null,
+				},
+				right: {
+					value: 7,
+					left: null,
+					right: null,
+				},
+			},
+			right: {
+				value: 13,
+				left: {
+					value: 11,
+					left: null,
+					right: null,
+				},
+				right: {
+					value: 16,
+					left: null,
+					right: null,
+				},
+			},
+		});
+	});
 });
