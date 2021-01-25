@@ -105,4 +105,17 @@ export class BinarySearchTree {
 		if (this.root) traverse(this.root);
 		return visited;
 	}
+
+	inOrder() {
+		const visited = [];
+
+		const traverse = (node) => {
+			if (node.left) traverse(node.left);
+			visited.push(node.value);
+			if (node.right) traverse(node.right);
+		};
+
+		if (this.root) traverse(this.root);
+		return visited;
+	}
 }
