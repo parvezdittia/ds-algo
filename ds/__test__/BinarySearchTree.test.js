@@ -160,8 +160,6 @@ describe("Binary Search Tree test", () => {
 	test("BFS on a BST", () => {
 		const tree = new BinarySearchTree();
 
-		expect(tree.find(10)).toBeNull();
-
 		tree.insert(10);
 		tree.insert(5);
 		tree.insert(13);
@@ -171,5 +169,19 @@ describe("Binary Search Tree test", () => {
 		tree.insert(7);
 
 		expect(tree.bfs()).toEqual([10, 5, 13, 2, 7, 11, 16]);
+	});
+
+	test("Preorder traversal on a BST", () => {
+		const tree = new BinarySearchTree();
+
+		tree.insert(10);
+		tree.insert(5);
+		tree.insert(13);
+		tree.insert(11);
+		tree.insert(2);
+		tree.insert(16);
+		tree.insert(7);
+
+		expect(tree.preOrder()).toEqual([10, 5, 2, 7, 13, 11, 16]);
 	});
 });
