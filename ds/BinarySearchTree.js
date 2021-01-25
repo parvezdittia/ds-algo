@@ -79,4 +79,23 @@ export class BinarySearchTree {
 
 		return visited;
 	}
+
+	preOrder() {
+		const visited = [];
+
+		const helper = (node) => {
+			if (node) {
+				visited.push(node.value);
+			}
+			if (node.left) {
+				helper(node.left);
+			}
+			if (node.right) {
+				helper(node.right);
+			}
+		};
+
+		helper(this.root);
+		return visited;
+	}
 }
