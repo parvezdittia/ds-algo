@@ -51,4 +51,32 @@ export class BinarySearchTree {
 
 		return pointer;
 	}
+
+	bfs() {
+		if (this.root === null) {
+			return [];
+		}
+
+		const queue = [];
+		const visited = [];
+		let pointer = null;
+
+		queue.push(this.root);
+
+		while (queue.length !== 0) {
+			pointer = queue.shift();
+
+			if (pointer.left) {
+				queue.push(pointer.left);
+			}
+
+			if (pointer.right) {
+				queue.push(pointer.right);
+			}
+
+			visited.push(pointer.value);
+		}
+
+		return visited;
+	}
 }
