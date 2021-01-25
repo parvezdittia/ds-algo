@@ -174,6 +174,8 @@ describe("Binary Search Tree test", () => {
 	test("Preorder traversal on a BST", () => {
 		const tree = new BinarySearchTree();
 
+		expect(tree.preOrder()).toEqual([]);
+
 		tree.insert(10);
 		tree.insert(5);
 		tree.insert(13);
@@ -183,5 +185,21 @@ describe("Binary Search Tree test", () => {
 		tree.insert(7);
 
 		expect(tree.preOrder()).toEqual([10, 5, 2, 7, 13, 11, 16]);
+	});
+
+	test("Postorder traversal on a BST", () => {
+		const tree = new BinarySearchTree();
+
+		expect(tree.postOrder()).toEqual([]);
+
+		tree.insert(10);
+		tree.insert(5);
+		tree.insert(13);
+		tree.insert(11);
+		tree.insert(2);
+		tree.insert(16);
+		tree.insert(7);
+
+		expect(tree.postOrder()).toEqual([2, 7, 5, 11, 16, 13, 10]);
 	});
 });
