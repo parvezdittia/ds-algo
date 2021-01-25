@@ -83,19 +83,26 @@ export class BinarySearchTree {
 	preOrder() {
 		const visited = [];
 
-		const helper = (node) => {
-			if (node) {
-				visited.push(node.value);
-			}
-			if (node.left) {
-				helper(node.left);
-			}
-			if (node.right) {
-				helper(node.right);
-			}
+		const traverse = (node) => {
+			visited.push(node.value);
+			if (node.left) traverse(node.left);
+			if (node.right) traverse(node.right);
 		};
 
-		helper(this.root);
+		if (this.root) traverse(this.root);
+		return visited;
+	}
+
+	postOrder() {
+		const visited = [];
+
+		const traverse = (node) => {
+			if (node.left) traverse(node.left);
+			if (node.right) traverse(node.right);
+			visited.push(node.value);
+		};
+
+		if (this.root) traverse(this.root);
 		return visited;
 	}
 }
