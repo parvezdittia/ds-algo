@@ -1,17 +1,25 @@
 export class MaxBinaryHeap {
+	values: Array<any>;
+
 	constructor() {
 		this.values = [];
 	}
 
-	parent(index) {
+	private swap(index1: number, index2: number) {
+		let temp = this.values[index1];
+		this.values[index1] = this.values[index2];
+		this.values[index2] = temp;
+	}
+
+	private parent(index: number) {
 		return Math.floor((index - 1) / 2);
 	}
 
-	children(index) {
+	private children(index: number) {
 		return [2 * index + 1, 2 * index + 2];
 	}
 
-	insert(value) {
+	insert(value: any) {
 		let positionOfNewNode = this.values.push(value) - 1;
 
 		let parentPosition = this.parent(positionOfNewNode);
@@ -33,9 +41,7 @@ export class MaxBinaryHeap {
 		let positionOfRoot = 0;
 		let positionOfLastLeafNode = this.values.length - 1;
 
-		let temp = this.values[positionOfLastLeafNode];
-		this.values[positionOfLastLeafNode] = this.values[positionOfRoot];
-		this.values[positionOfRoot] = temp;
+		this.swap(positionOfRoot, positionOfLastLeafNode);
 
 		const maxValue = this.values.pop();
 
@@ -47,15 +53,11 @@ export class MaxBinaryHeap {
 
 		while (pointerValue < leftChildValue || pointerValue < rightChildValue) {
 			if (leftChildValue <= rightChildValue) {
-				let temp = this.values[rightChild];
-				this.values[rightChild] = this.values[pointer];
-				this.values[pointer] = temp;
+				this.swap(pointer, rightChild);
 				pointer = rightChild;
 				pointerValue = this.values[rightChild];
 			} else {
-				let temp = this.values[leftChild];
-				this.values[leftChild] = this.values[pointer];
-				this.values[pointer] = temp;
+				this.swap(pointer, leftChild);
 				pointer = leftChild;
 				pointerValue = this.values[leftChild];
 			}
