@@ -22,10 +22,12 @@ export class MaxBinaryHeap {
 	insert(value: any) {
 		let positionOfNewNode = this.values.push(value) - 1;
 
+		if (positionOfNewNode === 0) return this;
+
 		let parentPosition = this.parent(positionOfNewNode);
 		let valueOfParentNode = this.values[parentPosition];
 
-		while (valueOfParentNode < value && positionOfNewNode > 0) {
+		while (valueOfParentNode < value) {
 			this.values[positionOfNewNode] = valueOfParentNode;
 			this.values[parentPosition] = value;
 
