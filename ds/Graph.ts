@@ -9,14 +9,14 @@ export class Graph {
 	}
 
 	addVertex(vertex: string) {
-		if (this.adjacencyList[vertex]) return;
-		this.adjacencyList[vertex] = [];
+		if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
 		return this;
 	}
 
 	addEdge(vertex1: string, vertex2: string) {
 		this.adjacencyList[vertex1].push(vertex2);
 		this.adjacencyList[vertex2].push(vertex1);
+		return this;
 	}
 
 	removeEdge(vertex1: string, vertex2: string) {
@@ -26,6 +26,7 @@ export class Graph {
 		this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(
 			(vertex: string) => vertex !== vertex1
 		);
+		return this;
 	}
 
 	removeVertex(vertex: string) {
@@ -39,5 +40,6 @@ export class Graph {
 			}
 		}
 		delete this.adjacencyList[vertex];
+		return this;
 	}
 }
