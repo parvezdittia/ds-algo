@@ -63,14 +63,5 @@ describe("Graph test", () => {
 				c: ["a", "b"],
 			},
 		});
-
-		graph.addEdge("b", "c");
-		expect(graph).toEqual({
-			adjacencyList: {
-				a: ["b", "c"],
-				b: ["a", "c"],
-				c: ["a", "b"],
-			},
-		});
 	});
 });
