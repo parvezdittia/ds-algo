@@ -27,4 +27,17 @@ class Graph {
 			(vertex: string) => vertex !== vertex1
 		);
 	}
+
+	removeVertex(vertex: string) {
+		const vertexList = this.adjacencyList[vertex];
+		while (vertexList.length !== 0) {
+			let node = vertexList.pop();
+			if (node) {
+				this.adjacencyList[node] = this.adjacencyList[node].filter(
+					(vertex: string) => vertex !== vertex
+				);
+			}
+		}
+		delete this.adjacencyList[vertex];
+	}
 }
