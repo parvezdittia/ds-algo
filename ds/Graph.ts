@@ -14,6 +14,10 @@ export class Graph {
 	}
 
 	addEdge(vertex1: string, vertex2: string) {
+		if (this.adjacencyList[vertex1] === undefined)
+			this.adjacencyList[vertex1] = [];
+		if (this.adjacencyList[vertex2] === undefined)
+			this.adjacencyList[vertex2] = [];
 		this.adjacencyList[vertex1].push(vertex2);
 		this.adjacencyList[vertex2].push(vertex1);
 		return this;
