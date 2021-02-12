@@ -1,8 +1,8 @@
-interface AdjacencyList {
+export interface AdjacencyList {
 	[key: string]: Array<string>;
 }
 
-class Graph {
+export class Graph {
 	adjacencyList: AdjacencyList;
 	constructor() {
 		this.adjacencyList = {};
