@@ -64,4 +64,50 @@ describe("Graph test", () => {
 			},
 		});
 	});
+
+	test("Remove edge from a graph", () => {
+		const graph = new Graph();
+		graph.addEdge("a", "b").addEdge("a", "c").addEdge("b", "c");
+		expect(graph).toEqual({
+			adjacencyList: {
+				a: ["b", "c"],
+				b: ["a", "c"],
+				c: ["a", "b"],
+			},
+		});
+		graph.removeEdge("a", "c");
+		expect(graph).toEqual({
+			adjacencyList: {
+				a: ["b"],
+				b: ["a", "c"],
+				c: ["b"],
+			},
+		});
+		graph.removeEdge("b", "c");
+		expect(graph).toEqual({
+			adjacencyList: {
+				a: ["b"],
+				b: ["a"],
+				c: [],
+			},
+		});
+
+		graph.removeEdge("b", "a");
+		expect(graph).toEqual({
+			adjacencyList: {
+				a: [],
+				b: [],
+				c: [],
+			},
+		});
+
+		graph.removeEdge("b", "a");
+		expect(graph).toEqual({
+			adjacencyList: {
+				a: [],
+				b: [],
+				c: [],
+			},
+		});
+	});
 });
