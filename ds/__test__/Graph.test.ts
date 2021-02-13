@@ -110,4 +110,35 @@ describe("Graph test", () => {
 			},
 		});
 	});
+
+	test("Remove vertex from graph", () => {
+		const graph = new Graph();
+		graph.addEdge("a", "b").addEdge("a", "c").addEdge("b", "c");
+		expect(graph).toEqual({
+			adjacencyList: {
+				a: ["b", "c"],
+				b: ["a", "c"],
+				c: ["a", "b"],
+			},
+		});
+		graph.removeVertex("a");
+		expect(graph).toEqual({
+			adjacencyList: {
+				b: ["c"],
+				c: ["b"],
+			},
+		});
+
+		graph.removeVertex("b");
+		expect(graph).toEqual({
+			adjacencyList: {
+				c: [],
+			},
+		});
+
+		graph.removeVertex("c");
+		expect(graph).toEqual({
+			adjacencyList: {},
+		});
+	});
 });

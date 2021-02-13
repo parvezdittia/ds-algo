@@ -39,7 +39,7 @@ export class Graph {
 			let node = vertexList.pop();
 			if (node) {
 				this.adjacencyList[node] = this.adjacencyList[node].filter(
-					(vertex: string) => vertex !== vertex
+					(v: string) => v !== vertex
 				);
 			}
 		}
