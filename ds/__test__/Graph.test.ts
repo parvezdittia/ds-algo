@@ -1,5 +1,5 @@
 import { describe, expect, test } from "@jest/globals";
-import { AdjacencyList, Graph } from "../Graph";
+import { Graph } from "../Graph";
 
 describe("Graph test", () => {
 	test("New graph test", () => {
@@ -10,28 +10,27 @@ describe("Graph test", () => {
 	test("Add vertex to graph", () => {
 		const graph = new Graph();
 		graph.addVertex("a");
-
 		expect(graph).toEqual({
 			adjacencyList: {
-				a: [],
+				a: new Set(),
 			},
 		});
 
 		graph.addVertex("b").addVertex("c");
 		expect(graph).toEqual({
 			adjacencyList: {
-				a: [],
-				b: [],
-				c: [],
+				a: new Set(),
+				b: new Set(),
+				c: new Set(),
 			},
 		});
 
 		graph.addVertex("a");
 		expect(graph).toEqual({
 			adjacencyList: {
-				a: [],
-				b: [],
-				c: [],
+				a: new Set(),
+				b: new Set(),
+				c: new Set(),
 			},
 		});
 	});
@@ -41,72 +40,75 @@ describe("Graph test", () => {
 		graph.addEdge("a", "b");
 		expect(graph).toEqual({
 			adjacencyList: {
-				a: ["b"],
-				b: ["a"],
+				a: new Set().add("b"),
+				b: new Set().add("a"),
 			},
 		});
 
 		graph.addEdge("a", "c");
 		expect(graph).toEqual({
 			adjacencyList: {
-				a: ["b", "c"],
-				b: ["a"],
-				c: ["a"],
+				a: new Set().add("b").add("c"),
+				b: new Set().add("a"),
+				c: new Set().add("a"),
 			},
 		});
 
 		graph.addEdge("b", "c");
 		expect(graph).toEqual({
 			adjacencyList: {
-				a: ["b", "c"],
-				b: ["a", "c"],
-				c: ["a", "b"],
+				a: new Set().add("b").add("c"),
+				b: new Set().add("a").add("c"),
+				c: new Set().add("a").add("b"),
 			},
 		});
 	});
 
 	test("Remove edge from a graph", () => {
 		const graph = new Graph();
+
 		graph.addEdge("a", "b").addEdge("a", "c").addEdge("b", "c");
 		expect(graph).toEqual({
 			adjacencyList: {
-				a: ["b", "c"],
-				b: ["a", "c"],
-				c: ["a", "b"],
+				a: new Set().add("b").add("c"),
+				b: new Set().add("a").add("c"),
+				c: new Set().add("b").add("a"),
 			},
 		});
+
 		graph.removeEdge("a", "c");
 		expect(graph).toEqual({
 			adjacencyList: {
-				a: ["b"],
-				b: ["a", "c"],
-				c: ["b"],
+				a: new Set().add("b"),
+				b: new Set().add("a").add("c"),
+				c: new Set().add("b"),
 			},
 		});
+
 		graph.removeEdge("b", "c");
 		expect(graph).toEqual({
 			adjacencyList: {
-				a: ["b"],
-				b: ["a"],
-				c: [],
+				a: new Set().add("b"),
+				b: new Set().add("a"),
+				c: new Set(),
 			},
 		});
 
 		graph.removeEdge("b", "a");
 		expect(graph).toEqual({
 			adjacencyList: {
-				a: [],
-				b: [],
-				c: [],
+				a: new Set(),
+				b: new Set(),
+				c: new Set(),
 			},
 		});
 
 		graph.removeEdge("b", "a");
 		expect(graph).toEqual({
 			adjacencyList: {
-				a: [],
-				b: [],
-				c: [],
+				a: new Set(),
+				b: new Set(),
+				c: new Set(),
 			},
 		});
 	});
@@ -116,27 +118,33 @@ describe("Graph test", () => {
 		graph.addEdge("a", "b").addEdge("a", "c").addEdge("b", "c");
 		expect(graph).toEqual({
 			adjacencyList: {
-				a: ["b", "c"],
-				b: ["a", "c"],
-				c: ["a", "b"],
+				a: new Set().add("b").add("c"),
+				b: new Set().add("a").add("c"),
+				c: new Set().add("b").add("a"),
 			},
 		});
+
 		graph.removeVertex("a");
 		expect(graph).toEqual({
 			adjacencyList: {
-				b: ["c"],
-				c: ["b"],
+				b: new Set().add("c"),
+				c: new Set().add("b"),
 			},
 		});
 
 		graph.removeVertex("b");
 		expect(graph).toEqual({
 			adjacencyList: {
-				c: [],
+				c: new Set(),
 			},
 		});
 
 		graph.removeVertex("c");
+		expect(graph).toEqual({
+			adjacencyList: {},
+		});
+
+		graph.removeVertex("d");
 		expect(graph).toEqual({
 			adjacencyList: {},
 		});

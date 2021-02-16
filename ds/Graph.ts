@@ -31,10 +31,12 @@ export class Graph {
 
 	removeVertex(vertex: string) {
 		const vertexList = this.adjacencyList[vertex];
-		for (let node in vertexList) {
-			this.adjacencyList[node].delete(vertex);
+		if (vertexList) {
+			vertexList.forEach((node) => {
+				this.adjacencyList[node].delete(vertex);
+			});
+			delete this.adjacencyList[vertex];
 		}
-		delete this.adjacencyList[vertex];
 		return this;
 	}
 }
