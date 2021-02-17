@@ -186,4 +186,28 @@ describe("Graph test", () => {
 
 		expect(graph.dfsIterative("A")).toEqual(["A", "C", "E", "F", "D", "B"]);
 	});
+
+	test("BFS on a grap", () => {
+		const graph = new Graph();
+		graph.addEdge("A", "B");
+		graph.addEdge("A", "C");
+		graph.addEdge("B", "D");
+		graph.addEdge("C", "E");
+		graph.addEdge("D", "E");
+		graph.addEdge("D", "F");
+		graph.addEdge("E", "F");
+
+		expect(graph).toEqual({
+			adjacencyList: {
+				A: new Set().add("B").add("C"),
+				B: new Set().add("A").add("D"),
+				C: new Set().add("A").add("E"),
+				D: new Set().add("B").add("E").add("F"),
+				E: new Set().add("C").add("D").add("F"),
+				F: new Set().add("D").add("E"),
+			},
+		});
+
+		expect(graph.bfs("A")).toEqual(["A", "B", "C", "D", "E", "F"]);
+	});
 });
