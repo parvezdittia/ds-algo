@@ -187,7 +187,7 @@ describe("Graph test", () => {
 		expect(graph.dfsIterative("A")).toEqual(["A", "C", "E", "F", "D", "B"]);
 	});
 
-	test("BFS on a grap", () => {
+	test("BFS on a graph", () => {
 		const graph = new Graph();
 		graph.addEdge("A", "B");
 		graph.addEdge("A", "C");

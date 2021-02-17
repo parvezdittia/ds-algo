@@ -48,9 +48,9 @@ export class Graph {
 			searchOutput.push(vertex);
 			visited.add(vertex);
 
-			const ajdacentVertices = this.adjacencyList[vertex];
+			const adjacentVertices = this.adjacencyList[vertex];
 
-			ajdacentVertices.forEach((adjacentVertex) => {
+			adjacentVertices.forEach((adjacentVertex) => {
 				if (!visited.has(adjacentVertex)) {
 					dfs(adjacentVertex);
 				}
@@ -74,8 +74,8 @@ export class Graph {
 				if (!visited.has(vertex)) {
 					searchOutput.push(vertex);
 					visited.add(vertex);
-					const ajdacentVertices = this.adjacencyList[vertex];
-					ajdacentVertices.forEach((adjacentVertex) => {
+					const adjacentVertices = this.adjacencyList[vertex];
+					adjacentVertices.forEach((adjacentVertex) => {
 						stack.push(adjacentVertex);
 					});
 				}
