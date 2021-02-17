@@ -39,4 +39,49 @@ export class Graph {
 		}
 		return this;
 	}
+
+	dfsRecursive(startVertex: string) {
+		const visited: Set<string> = new Set();
+		const searchOutput: Array<string> = [];
+
+		const dfs = (vertex: string) => {
+			searchOutput.push(vertex);
+			visited.add(vertex);
+
+			const ajdacentVertices = this.adjacencyList[vertex];
+
+			ajdacentVertices.forEach((adjacentVertex) => {
+				if (!visited.has(adjacentVertex)) {
+					dfs(adjacentVertex);
+				}
+			});
+		};
+
+		dfs(startVertex);
+		return searchOutput;
+	}
+
+	dfsIterative(startVertex: string) {
+		const visited: Set<string> = new Set();
+		const searchOutput: Array<string> = [];
+		const stack: Array<string> = [];
+
+		stack.push(startVertex);
+
+		while (stack.length !== 0) {
+			let vertex = stack.pop();
+			if (vertex) {
+				if (!visited.has(vertex)) {
+					searchOutput.push(vertex);
+					visited.add(vertex);
+					const ajdacentVertices = this.adjacencyList[vertex];
+					ajdacentVertices.forEach((adjacentVertex) => {
+						stack.push(adjacentVertex);
+					});
+				}
+			}
+		}
+
+		return searchOutput;
+	}
 }
