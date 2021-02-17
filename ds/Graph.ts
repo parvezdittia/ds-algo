@@ -84,4 +84,31 @@ export class Graph {
 
 		return searchOutput;
 	}
+
+	bfs(startVertex: string) {
+		const visited: Set<string> = new Set();
+		const searchOutput: Array<string> = [];
+		const queue: Array<string> = [];
+
+		queue.push(startVertex);
+
+		while (queue.length !== 0) {
+			let vertex = queue.shift();
+
+			if (vertex) {
+				if (!visited.has(vertex)) {
+					searchOutput.push(vertex);
+					visited.add(vertex);
+
+					const adjacentVertices = this.adjacencyList[vertex];
+
+					adjacentVertices.forEach((adjacentVertex) => {
+						queue.push(adjacentVertex);
+					});
+				}
+			}
+		}
+
+		return searchOutput;
+	}
 }
