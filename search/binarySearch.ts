@@ -1,15 +1,14 @@
-function binarySearch(arr, target) {
-	console.log(arr);
-
+export const binarySearch = (arr: Array<any>, fn: Function) => {
 	let left = 0;
 	let right = arr.length - 1;
 
 	while (left <= right) {
 		let middle = Math.floor((left + right) / 2);
+		let target = fn(middle);
 
-		if (target === arr[middle]) {
+		if (target === 0) {
 			return middle;
-		} else if (target < arr[middle]) {
+		} else if (target < 0) {
 			right = middle - 1;
 		} else {
 			left = middle + 1;
@@ -17,6 +16,4 @@ function binarySearch(arr, target) {
 	}
 
 	return -1;
-}
-
-console.log(binarySearch([1, 2, 3, 4], 3));
+};
