@@ -18,7 +18,7 @@ describe("Bubble Sort Test", () => {
 	});
 
 	test("Empty array", () => {
-		const arr = [];
+		const arr: never[] = [];
 		expect(bubbleSort(arr)).toEqual([]);
 	});
 
