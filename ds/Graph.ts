@@ -1,4 +1,4 @@
-export interface AdjacencyList {
+interface AdjacencyList {
 	[key: string]: Set<string>;
 }
 
@@ -8,12 +8,12 @@ export class Graph {
 		this.adjacencyList = {};
 	}
 
-	addVertex(vertex: string) {
+	addVertex(vertex: string): Graph {
 		if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = new Set();
 		return this;
 	}
 
-	addEdge(vertex1: string, vertex2: string) {
+	addEdge(vertex1: string, vertex2: string): Graph {
 		if (this.adjacencyList[vertex1] === undefined)
 			this.adjacencyList[vertex1] = new Set();
 		if (this.adjacencyList[vertex2] === undefined)
@@ -23,13 +23,13 @@ export class Graph {
 		return this;
 	}
 
-	removeEdge(vertex1: string, vertex2: string) {
+	removeEdge(vertex1: string, vertex2: string): Graph {
 		this.adjacencyList[vertex1].delete(vertex2);
 		this.adjacencyList[vertex2].delete(vertex1);
 		return this;
 	}
 
-	removeVertex(vertex: string) {
+	removeVertex(vertex: string): Graph {
 		const vertexList = this.adjacencyList[vertex];
 		if (vertexList) {
 			vertexList.forEach((node) => {
@@ -40,7 +40,7 @@ export class Graph {
 		return this;
 	}
 
-	dfsRecursive(startVertex: string) {
+	dfsRecursive(startVertex: string): Array<string> {
 		const visited: Set<string> = new Set();
 		const searchOutput: Array<string> = [];
 
@@ -61,7 +61,7 @@ export class Graph {
 		return searchOutput;
 	}
 
-	dfsIterative(startVertex: string) {
+	dfsIterative(startVertex: string): Array<string> {
 		const visited: Set<string> = new Set();
 		const searchOutput: Array<string> = [];
 		const stack: Array<string> = [];
@@ -69,7 +69,7 @@ export class Graph {
 		stack.push(startVertex);
 
 		while (stack.length !== 0) {
-			let vertex = stack.pop();
+			const vertex = stack.pop();
 			if (vertex) {
 				if (!visited.has(vertex)) {
 					searchOutput.push(vertex);
@@ -85,7 +85,7 @@ export class Graph {
 		return searchOutput;
 	}
 
-	bfs(startVertex: string) {
+	bfs(startVertex: string): Array<string> {
 		const visited: Set<string> = new Set();
 		const searchOutput: Array<string> = [];
 		const queue: Array<string> = [];
@@ -93,7 +93,7 @@ export class Graph {
 		queue.push(startVertex);
 
 		while (queue.length !== 0) {
-			let vertex = queue.shift();
+			const vertex = queue.shift();
 
 			if (vertex) {
 				if (!visited.has(vertex)) {
