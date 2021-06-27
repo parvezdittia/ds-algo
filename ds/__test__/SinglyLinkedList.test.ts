@@ -1,4 +1,4 @@
-import { Node, SinglyLinkedList } from "../SinglyLinkedList.js";
+import { Node, SinglyLinkedList } from "../SinglyLinkedList";
 import { describe, expect, test } from "@jest/globals";
 
 describe("Node Test", () => {
@@ -268,7 +268,7 @@ describe("Linked List Test", () => {
 	});
 
 	test("Delete at a given index", () => {
-		let list = new SinglyLinkedList();
+		const list = new SinglyLinkedList();
 
 		expect(list.delete(-1)).toEqual({ head: null });
 		expect(list.delete(0)).toEqual({ head: null });
@@ -386,5 +386,37 @@ describe("Linked List Test", () => {
 				},
 			},
 		});
+	});
+
+	test.only("Merge sorted linked list", () => {
+		const list1 = new SinglyLinkedList();
+		list1.push(1);
+		list1.push(3);
+		list1.push(7);
+
+		const list2 = new SinglyLinkedList();
+		list2.push(2);
+		list2.push(4);
+
+		const merged = SinglyLinkedList.merge(list1, list2);
+		const output = new SinglyLinkedList();
+		output.push(1);
+		output.push(2);
+		output.push(3);
+		output.push(4);
+		output.push(7);
+		expect(merged).toEqual(output);
+
+		const list3 = new SinglyLinkedList();
+
+		const list4 = new SinglyLinkedList();
+		list4.push(2);
+		list4.push(4);
+
+		const mergedA = SinglyLinkedList.merge(list3, list4);
+		const outputA = new SinglyLinkedList();
+		outputA.push(2);
+		outputA.push(4);
+		expect(mergedA).toEqual(outputA);
 	});
 });

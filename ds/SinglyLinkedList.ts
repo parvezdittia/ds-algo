@@ -1,16 +1,19 @@
 export class Node {
-	constructor(val) {
+	val: any;
+	next: Node | null;
+	constructor(val: any) {
 		this.val = val;
 		this.next = null;
 	}
 }
 
 export class SinglyLinkedList {
+	head: Node | null;
 	constructor() {
 		this.head = null;
 	}
 
-	push(val) {
+	push(val: any): number {
 		const newNode = new Node(val);
 
 		if (this.head === null) {
@@ -30,40 +33,40 @@ export class SinglyLinkedList {
 		return lengthOfList + 1;
 	}
 
-	pop() {
+	pop(): any {
 		if (this.head === null) {
 			return undefined;
 		} else if (this.head.next === null) {
-			let popedValue = this.head.val;
+			const poppedValue = this.head.val;
 			this.head = null;
-			return popedValue;
+			return poppedValue;
 		} else {
 			let pointer = this.head;
-			while (pointer.next.next !== null) {
+			while (pointer.next?.next !== null) {
 				pointer = pointer.next;
 			}
-			let popedData = pointer.next.val;
+			const poppedData = pointer.next.val;
 			pointer.next = null;
-			return popedData;
+			return poppedData;
 		}
 	}
 
-	shift() {
+	shift(): any {
 		if (this.head === null) {
 			return undefined;
 		} else if (this.head.next === null) {
-			let shiftedValue = this.head.val;
+			const shiftedValue = this.head.val;
 			this.head = null;
 			return shiftedValue;
 		} else {
-			let shiftedValue = this.head.val;
+			const shiftedValue = this.head.val;
 			this.head = this.head.next;
 			return shiftedValue;
 		}
 	}
 
-	unshift(val) {
-		let newNode = new Node(val);
+	unshift(val: any): any {
+		const newNode = new Node(val);
 
 		if (this.head === null) {
 			this.head = newNode;
@@ -75,7 +78,7 @@ export class SinglyLinkedList {
 		return val;
 	}
 
-	get(index) {
+	get(index: number): any {
 		if (index < 0) {
 			return undefined;
 		}
@@ -89,7 +92,7 @@ export class SinglyLinkedList {
 		return pointer ? pointer.val : undefined;
 	}
 
-	set(index, data) {
+	set(index: number, data: any): any | undefined {
 		if (index < 0) {
 			return undefined;
 		}
@@ -108,9 +111,9 @@ export class SinglyLinkedList {
 		}
 	}
 
-	insert(index, data) {
+	insert(index: number, data: any): SinglyLinkedList {
 		if (index <= 0) {
-			let newNode = new Node(data);
+			const newNode = new Node(data);
 			newNode.next = this.head;
 			this.head = newNode;
 			return this;
@@ -124,13 +127,13 @@ export class SinglyLinkedList {
 			i++;
 		}
 
-		let newNode = new Node(data);
+		const newNode = new Node(data);
 		newNode.next = pointer.next;
 		pointer.next = newNode;
 		return this;
 	}
 
-	delete(index) {
+	delete(index: number): SinglyLinkedList {
 		if (index < 0 || this.head === null) {
 			return this;
 		}
@@ -156,7 +159,7 @@ export class SinglyLinkedList {
 		}
 	}
 
-	reverse() {
+	reverse(): SinglyLinkedList {
 		if (this.head === null || this.head.next === null) {
 			return this;
 		}
@@ -174,5 +177,44 @@ export class SinglyLinkedList {
 		this.head.next = pointer;
 		pointer = this.head;
 		return this;
+	}
+
+	static merge(
+		list1: SinglyLinkedList,
+		list2: SinglyLinkedList
+	): SinglyLinkedList {
+		let temp1 = list1.head;
+		let temp2 = list2.head;
+		const output: SinglyLinkedList = new SinglyLinkedList();
+		let outputTemp: Node = null;
+
+		while (temp1 !== null || temp2 !== null) {
+			let min: Node = null;
+
+			if (temp1 === null) {
+				min = temp2;
+				temp2 = temp2.next;
+			} else if (temp2 === null) {
+				min = temp1;
+				temp1 = temp1.next;
+			} else if (temp1.val < temp2.val) {
+				min = temp1;
+				temp1 = temp1.next;
+			} else if (temp1.val >= temp2.val) {
+				min = temp2;
+				temp2 = temp2.next;
+			}
+
+			if (output.head === null) {
+				output.head = new Node();
+				output.head.val = min.val;
+				outputTemp = output.head;
+			} else {
+				outputTemp.next = new Node();
+				outputTemp = outputTemp.next;
+				outputTemp.val = min.val;
+			}
+		}
+		return output;
 	}
 }
