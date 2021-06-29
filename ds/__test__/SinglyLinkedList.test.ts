@@ -388,7 +388,7 @@ describe("Linked List Test", () => {
 		});
 	});
 
-	test.only("Merge sorted linked list", () => {
+	test("Merge sorted linked list", () => {
 		const list1 = new SinglyLinkedList();
 		list1.push(1);
 		list1.push(3);
