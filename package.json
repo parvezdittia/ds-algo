@@ -4,7 +4,7 @@
 	"description": "DS Algo",
 	"main": "anagram.js",
 	"scripts": {
-		"test": "jest",
+		"test": "jest --watch",
 		"test-coverage": "jest --collectCoverage"
 	},
 	"repository": {
@@ -22,6 +22,7 @@
 		"@babel/core": "^7.12.10",
 		"@babel/preset-env": "^7.12.11",
 		"@babel/preset-typescript": "^7.12.16",
+		"@types/jest": "^27.0.2",
 		"@typescript-eslint/eslint-plugin": "^4.15.2",
 		"@typescript-eslint/parser": "^4.15.2",
 		"eslint": "^7.15.0",
