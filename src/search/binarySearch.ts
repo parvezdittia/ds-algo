@@ -1,4 +1,4 @@
-export const binarySearch = (arr: Array<any>, fn: Function) => {
+export const binarySearch = (arr: Array<any>, fn: () => -1 | 0 | 1) => {
 	let left = 0;
 	let right = arr.length - 1;
 
